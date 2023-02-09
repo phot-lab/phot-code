@@ -14,10 +14,49 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "menus": {
+      "editor/context": [
+        {
+          "command": "hello-world.showHelloWorld",
+          "when": "resourceExtname == .xml"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "hello-world.showHelloWorld",
-        "title": "Hello World (Vue): Show"
+        "title": "XML : Show"
+      },
+      {
+        "command": "vscode-demo.currentText",
+        "title": "currentText"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "scm-me",
+          "title": "scm",
+          "icon": "assets/remote-explorer.svg"
+        }
+      ]
+    },
+    "views": {
+      "scm-me": [
+        {
+          "id": "scm-me",
+          "name": "Source Control"
+        },
+        {
+          "id": "package-outline",
+          "name": "Outline"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "scm-me",
+        "contents": "当该项目未上传git仓库时，提示用户上传项目.\n[Open Folder](command:vscode.openFolder)\n[Clone Repository](command:git.clone)\n官方文档地址如下：[read our docs](https://aka.ms/vscode-scm)."
       }
     ]
   },
