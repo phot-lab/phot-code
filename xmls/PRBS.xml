@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='utf8'?>
+<MASTER2 addressId="pt07://lcl.bn2.mdl.PRBS.1" author="VPIphotonics GmbH" buildNum="736" description="The module generates many types of pseudorandom data sequences, for example, PRBS and De Bruijn sequences of order N, alternate ones and zeros, predefined sequences, all ones, and all zeros." domain="SDF" editor="VPIphotonics GmbH" keywords="Instrumentation, Electrical, Data, Data Generator, PRBS, Word Generator, Sequence, Binary." prodVer="11.0" product="VPI_TMM_OPTICALSYSTEMS.pro,VPI_CM_FIBERAMPLIFIER.pro,VPI_CM_ACTIVEPHOTONICS.pro,VPI_TMM_LAB.pro" ptName="PRBS" resVersion="" ver="3.0" masterPath="getComponentFilePath" parallelComputingMethod="CPU" calculationMethod = "genPattern">
+ <ICONDEF __key="icon" bounds="-2.0,-2.0,3.0,2.0" iconPath=":/component/ComponentIcon/Pseudo-Random Bit Sequence Generator.png">
+  <body __key="body">
+   <rect_body __key="gprim" position="-2.000000, -2.000000" size="4.000000, 4.000000">
+            </rect_body>
+  </body>
+  <decoration __key="decoration">
+   <rect __key="gprim" linecolor="black" position="-2.000000, -2.000000" size="4.000000, 4.000000">
+            </rect>
+   <rect __key="gprim" fillcolor="black" position="0.520000, 0.000000" size="0.080000, 0.080000">
+            </rect>
+   <rect __key="gprim" fillcolor="black" position="0.720000, 0.000000" size="0.080000, 0.080000">
+            </rect>
+   <rect __key="gprim" fillcolor="black" position="0.920000, 0.000000" size="0.080000, 0.080000">
+            </rect>
+   <line __key="gprim" linecolor="black" points="-1.040000, 0.680000, -1.040000, -0.680000, -0.920000, -0.800000, -0.560000, -0.800000, -0.440000, -0.680000, -0.440000, 0.680000, -0.560000, 0.800000, -0.920000, 0.800000, -1.040000, 0.680000">
+            </line>
+   <line __key="gprim" linecolor="black" points="-0.120000, -0.200000, 0.200000, -0.800000, 0.200000, 0.800000">
+            </line>
+   <line __key="gprim" linecolor="black" points="-1.800000, -0.200000, -1.480000, -0.800000, -1.480000, 0.800000">
+            </line>
+   <line __key="gprim" linecolor="black" points="1.240000, -0.200000, 1.560000, -0.800000, 1.560000, 0.800000">
+            </line>
+  </decoration>
+  <physical __key="physical">
+   <line __key="gprim" linecolor="integer" points="3.0,0.0,2.0,0.0">
+            </line>
+  </physical>
+ </ICONDEF>
+ <INTERFACE __key="interface">
+  <PORTDEF __key="ports" desc="bit sequence" dir="out" label="output" matrix="no" objectId="output" type="integer" width="1">
+   <TERM __key="terms" look="icon" objectId="0">
+    <GEOMETRY __key="geom" rot="0f" x="3.0" y="0.0">
+                </GEOMETRY>
+   </TERM>
+  </PORTDEF>
+  <STATEDEF __key="states" category="Physical" desc="The bit rate of the system." editable="true" label="BitRate" objectId="BitRate" path="Physical" type="float" visible="true">
+   <SETTING __key="default" exprType="standard" state="BitRate" value="BitRateDefault">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="open" maximum="inf" minimum="0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="bit/s">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Number of zero bits preceding the generated bit sequence." editable="true" label="PreSpaces" objectId="PreSpaces" path="Physical" type="int" visible="true">
+   <SETTING __key="default" exprType="standard" state="PreSpaces" value="1">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="inf" minimum="0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Number of zero bits succeeding the generated bit sequence." editable="true" label="PostSpaces" objectId="PostSpaces" path="Physical" type="int" visible="true">
+   <SETTING __key="default" exprType="standard" state="PostSpaces" value="1">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="inf" minimum="0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Defines the type of binary sequence. The displayed parameter set depends on the value of this parameter as the following physical parameters are context- sensitive." editable="true" label="PRBS_Type" objectId="PRBS_Type" path="Physical" type="enumeration" visible="true">
+   <SETTING __key="default" exprType="standard" state="PRBS_Type" value="PRBS">
+            </SETTING>
+   <ENUMDEF __key="enumerations" value="PRBS|PRBS_N|DB_KN|FixedMarkNumber|CodeWord|ReadFromFile|Alternate|One|Zero">
+            </ENUMDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="The probability of marks (ones) in the bit sequence." editable="true" label="MarkProbability" objectId="MarkProbability" path="Physical" type="float" visible="true">
+   <CONTEXTDEF __key="context" enumeration="" expression="( $PRBS_Type == &quot;PRBS&quot; )" value="">
+            </CONTEXTDEF>
+   <SETTING __key="default" exprType="standard" state="MarkProbability" value="0.5">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="1.0" minimum="0.0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Order, N, of the pseudorandom symbol sequence generator if PRBS_N or DB_KN is chosen for PRBS_Type." editable="true" label="PRBS_Order" objectId="PRBS_Order" path="Physical" type="int" visible="true">
+   <CONTEXTDEF __key="context" enumeration="" expression="( ($PRBS_Type == &quot;PRBS_N&quot;) || ($PRBS_Type == &quot;DB_KN&quot;) )" value="">
+            </CONTEXTDEF>
+   <SETTING __key="default" exprType="standard" state="PRBS_Order" value="7">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="30" minimum="1">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Number of bits, b, per symbol, for k-ary De Bruijn sequences (k = 2^b)." editable="true" label="BitsPerSymbol" objectId="BitsPerSymbol" path="Physical" type="int" visible="true">
+   <CONTEXTDEF __key="context" enumeration="" expression="( $PRBS_Type == &quot;DB_KN&quot; )" value="">
+            </CONTEXTDEF>
+   <SETTING __key="default" exprType="standard" state="BitsPerSymbol" value="1">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="12" minimum="1">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Applies a differential precoding on the sequence." editable="true" label="DiffPreCoding" objectId="DiffPreCoding" path="Physical" type="enumeration" visible="true">
+   <CONTEXTDEF __key="context" enumeration="" expression="( ($PRBS_Type == &quot;PRBS_N&quot;) || ($PRBS_Type == &quot;DB_KN&quot;) )" value="">
+            </CONTEXTDEF>
+   <SETTING __key="default" exprType="standard" state="DiffPreCoding" value="No">
+            </SETTING>
+   <ENUMDEF __key="enumerations" value="Yes|No">
+            </ENUMDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Specifies the exact number of marks between preceding and succeeding bits." editable="true" label="MarkNumber" objectId="MarkNumber" path="Physical" type="int" visible="true">
+   <CONTEXTDEF __key="context" enumeration="" expression="( $PRBS_Type == &quot;FixedMarkNumber&quot; )" value="">
+            </CONTEXTDEF>
+   <SETTING __key="default" exprType="standard" state="MarkNumber" value="7">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="inf" minimum="0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Specifies the user-defined code word." editable="true" label="CodeWord" objectId="CodeWord" path="Physical" type="intarray" visible="true">
+   <CONTEXTDEF __key="context" enumeration="" expression="( $PRBS_Type == &quot;CodeWord&quot; )" value="">
+            </CONTEXTDEF>
+   <SETTING __key="default" exprType="standard" state="CodeWord" value="">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="1" minimum="0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="Name of file to read the bit sequence from." editable="true" label="InputFilename" objectId="InputFilename" path="Physical" type="inputfile" visible="true">
+   <CONTEXTDEF __key="context" enumeration="" expression="( $PRBS_Type == &quot;ReadFromFile&quot; )" value="">
+            </CONTEXTDEF>
+   <SETTING __key="default" exprType="standard" state="InputFilename" value="">
+            </SETTING>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Enhanced" desc="Name of file to save the used bit sequence to." editable="true" label="OutputFilename" objectId="OutputFilename" path="Enhanced" type="outputfile" visible="true">
+   <SETTING __key="default" exprType="standard" state="OutputFilename" value="">
+            </SETTING>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Enhanced" desc="Defines the behavior of the module on repetitive calls." editable="true" label="ControlFlagReset" objectId="ControlFlagReset" path="Enhanced" type="enumeration" visible="true">
+   <SETTING __key="default" exprType="standard" state="ControlFlagReset" value="Continue">
+            </SETTING>
+   <ENUMDEF __key="enumerations" value="Continue|Reset">
+            </ENUMDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Enhanced" desc="Defines the mode of writing to the file specified by OutputFilename." editable="true" label="ControlFlagWrite" objectId="ControlFlagWrite" path="Enhanced" type="enumeration" visible="true">
+   <SETTING __key="default" exprType="standard" state="ControlFlagWrite" value="Overwrite">
+            </SETTING>
+   <ENUMDEF __key="enumerations" value="Append|Overwrite">
+            </ENUMDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Enhanced" desc="The random seed lookup index to use for noise generation. A value of zero uses an automatic unique seed." editable="true" label="RandomNumberSeed" objectId="RandomNumberSeed" path="Enhanced" type="int" visible="true">
+   <SETTING __key="default" exprType="standard" state="RandomNumberSeed" value="0">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" bounds="closed" maximum="10000" minimum="0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+  <STATEDEF __key="states" category="Physical" desc="新增的标签用于匹配底层运算库" editable="true" label="nsymb" objectId="nsymb" path="Physical" type="string" visible="true">
+   <SETTING __key="default" exprType="standard" state="nsymb" value="1024">
+            </SETTING>
+   <RANGEDEF __key="range" action="abort" maximum="inf" minimum="0">
+            </RANGEDEF>
+   <UNITDEF __key="unit" type="string" unit="">
+            </UNITDEF>
+  </STATEDEF>
+ </INTERFACE>
+</MASTER2>

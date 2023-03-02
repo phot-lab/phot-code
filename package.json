@@ -10,7 +10,10 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:hello-world.showHelloWorld"
+    "onCommand:hello-world.showHelloWorld",
+    "onCommand:create-project.createProjectQuickPick",
+    "onCommand:create-project.initProject",
+    "onCommand:create-project.templateProject"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -19,6 +22,11 @@
         {
           "command": "hello-world.showHelloWorld",
           "when": "resourceExtname == .xml"
+        }
+      ],
+      "file/newFile": [
+        {
+          "command": "hello-world.showHelloWorld"
         }
       ]
     },
@@ -30,6 +38,18 @@
       {
         "command": "vscode-demo.currentText",
         "title": "currentText"
+      },
+      {
+        "command": "create-project.createProjectQuickPick",
+        "title": "创建光组件工程"
+      },
+      {
+        "command": "create-project.initProject",
+        "title": "创建空白工程"
+      },
+      {
+        "command": "create-project.templateProject",
+        "title": "创建模板工程"
       }
     ],
     "viewsContainers": {
@@ -48,15 +68,23 @@
           "name": "Source Control"
         },
         {
-          "id": "package-outline",
-          "name": "Outline"
+          "id": "create-project",
+          "name": "创建光组件工程"
+        },
+        {
+          "id": "XML-files",
+          "name": "XML模板文件"
         }
       ]
     },
     "viewsWelcome": [
       {
         "view": "scm-me",
-        "contents": "当该项目未上传git仓库时，提示用户上传项目.\n[Open Folder](command:vscode.openFolder)\n[Clone Repository](command:git.clone)\n官方文档地址如下：[read our docs](https://aka.ms/vscode-scm)."
+        "contents": "当该项目未上传git仓库时，提示用户上传项目.\n[Open Folder](command:vscode.openFile)\n[Clone Repository](command:git.clone)\n官方文档地址如下：[read our docs](https://aka.ms/vscode-scm)."
+      },
+      {
+        "view": "create-project",
+        "contents": "创建光组件工程方式如下：\n 1. 点击按钮来创建光组件工程。\n 2. 可以选择两种方式来创建工程。 \n [创建光组件空白工程](command:create-project.initProject) \n [创建光组件模板工程](command:create-project.templateProject) \n 点击创建按钮后可根据界面提示进行光组件工程的创建。"
       }
     ]
   },
@@ -72,7 +100,7 @@
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
-    "@types/node": "^12.11.7",
+    "@types/node": "^16.18.1",
     "@types/vscode": "^1.46.0",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
