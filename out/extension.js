@@ -14,6 +14,7 @@ const vscode_1 = require("vscode");
 const vscode = require("vscode");
 const HelloWorldPanel_1 = require("./panels/HelloWorldPanel");
 const initProject_1 = require("./create_project/initProject");
+const xmlParser_1 = require("./code_generator/xmlParser");
 function activate(context) {
     // Create the show hello world command
     const showHelloWorldCommand = vscode_1.commands.registerCommand("hello-world.showHelloWorld", () => {
@@ -40,6 +41,7 @@ function activate(context) {
         if (xmlUri && xmlUri[0]) {
             let xmlPath = xmlUri[0].fsPath;
             vscode_1.window.showInformationMessage("xmlPath is : " + xmlPath);
+            (0, xmlParser_1.xmlParse)();
         }
     }));
     //create initProject

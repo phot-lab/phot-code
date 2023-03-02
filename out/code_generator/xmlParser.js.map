@@ -1,0 +1,1 @@
+{"version":3,"file":"xmlParser.js","sourceRoot":"","sources":["../../src/code_generator/xmlParser.ts"],"names":[],"mappings":";;;AAAA,iCAAiC;AACjC,mCAA8B;AAC9B,SAAgB,QAAQ;IACpB,IAAI,QAAQ,GAAG,IAAI,MAAM,CAAC,WAAW,CAAC,+BAA+B,CAAC,CAAC;IACvE,IAAI,MAAM,GAAG,QAAQ,CAAC,GAAG,CAAC;IAC1B,eAAM,CAAC,sBAAsB,CAAC,cAAc,GAAG,MAAM,CAAC,CAAC;AAC3D,CAAC;AAJD,4BAIC"}

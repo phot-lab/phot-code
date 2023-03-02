@@ -2,6 +2,7 @@ import { commands, ExtensionContext,window} from "vscode";
 import * as vscode  from "vscode";
 import { HelloWorldPanel } from "./panels/HelloWorldPanel";
 import {createInitProject} from "./create_project/initProject";
+import {xmlParse} from "./code_generator/xmlParser";
 export function activate(context: ExtensionContext) {
   // Create the show hello world command
   const showHelloWorldCommand = commands.registerCommand("hello-world.showHelloWorld", () => {
@@ -28,6 +29,7 @@ export function activate(context: ExtensionContext) {
     if (xmlUri && xmlUri[0]) {
       let xmlPath : string = xmlUri[0].fsPath;
       window.showInformationMessage("xmlPath is : " + xmlPath);
+      xmlParse();
     }
   })
   //create initProject
