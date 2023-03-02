@@ -34,13 +34,17 @@ export function activate(context: ExtensionContext) {
   const initProject = commands.registerCommand("create-project.initProject", async () => {
     const saveDialogOptions : vscode.SaveDialogOptions = {
       saveLabel : '选择空白工程的存放地址',
-      title : '选择空白工程文件的存放目录'
+      title : '选择空白工程文件的存放目录',
+      filters: {'文件夹':['*']}
     }
     const savePathUri = await window.showSaveDialog(saveDialogOptions);
     if (savePathUri) {
       let savePath : string = savePathUri.fsPath;
       window.showInformationMessage("savePath is : " + savePath);
       createInitProject(savePath, context);
+      savePath = savePath.replace(/\\/g, '\/');
+      let folderUri = vscode.Uri.file(savePath);
+      vscode.commands.executeCommand('vscode.openFolder', folderUri);
     }
   })
   // Add command to the extension context

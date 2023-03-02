@@ -10,10 +10,21 @@ function createInitProject(filepath, context) {
     filepath = "file:///" + filepath;
     vscode.window.showInformationMessage("path is :" + path);
     let fileName = "PRBS.xml";
-    let copyFromPath = context.asAbsolutePath(path.join('xmls', fileName));
-    vscode.window.showInformationMessage(copyFromPath);
-    (0, node_fs_1.copyFileSync)(copyFromPath, filepath);
-    // 获取在webview中使用的特殊URI
+    let pyName = "fiber.py";
+    let tomlName = "class.toml";
+    let copyPyPath = context.asAbsolutePath(path.join('py_tomls', pyName));
+    let copyTomlPath = context.asAbsolutePath(path.join('py_tomls', tomlName));
+    (0, node_fs_1.mkdirSync)(new URL(filepath));
+    (0, node_fs_1.mkdirSync)(new URL(filepath + '\/src'));
+    (0, node_fs_1.mkdirSync)(new URL(filepath + '\/src\/test'));
+    (0, node_fs_1.mkdirSync)(new URL(filepath + '\/.vscode'));
+    //copyFileSync(copyFromPath, filepath);
+    //get local resource URI used in webview 
+    //let data = readFileSync(copyFromPath);
+    let optiDevPyName = "opti_dev.py";
+    let optiDevTomlName = "opti_dev.toml";
+    (0, node_fs_1.copyFileSync)(copyPyPath, new URL(filepath + "\/src\/" + optiDevPyName));
+    (0, node_fs_1.copyFileSync)(copyPyPath, new URL(filepath + "\/" + optiDevTomlName));
 }
 exports.createInitProject = createInitProject;
 //# sourceMappingURL=initProject.js.map

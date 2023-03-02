@@ -56,8 +56,8 @@
       "activitybar": [
         {
           "id": "scm-me",
-          "title": "scm",
-          "icon": "assets/remote-explorer.svg"
+          "title": "PhotCodeXT",
+          "icon": "assets/00-02-23-170050.svg"
         }
       ]
     },
@@ -65,7 +65,7 @@
       "scm-me": [
         {
           "id": "scm-me",
-          "name": "Source Control"
+          "name": "Open Folder"
         },
         {
           "id": "create-project",
@@ -80,7 +80,7 @@
     "viewsWelcome": [
       {
         "view": "scm-me",
-        "contents": "当该项目未上传git仓库时，提示用户上传项目.\n[Open Folder](command:vscode.openFile)\n[Clone Repository](command:git.clone)\n官方文档地址如下：[read our docs](https://aka.ms/vscode-scm)."
+        "contents": "用户可以点击下方按钮选择打开工程文件.\n[Open Folder](command:vscode.openFolder)\n[About Us](command:showHelloWorld)\n官方文档地址如下：[read our docs](https://aka.ms/vscode-scm)."
       },
       {
         "view": "create-project",

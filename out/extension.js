@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = void 0;
 const vscode_1 = require("vscode");
+const vscode = require("vscode");
 const HelloWorldPanel_1 = require("./panels/HelloWorldPanel");
 const initProject_1 = require("./create_project/initProject");
 function activate(context) {
@@ -45,13 +46,17 @@ function activate(context) {
     const initProject = vscode_1.commands.registerCommand("create-project.initProject", () => __awaiter(this, void 0, void 0, function* () {
         const saveDialogOptions = {
             saveLabel: '选择空白工程的存放地址',
-            title: '选择空白工程文件的存放目录'
+            title: '选择空白工程文件的存放目录',
+            filters: { '文件夹': ['*'] }
         };
         const savePathUri = yield vscode_1.window.showSaveDialog(saveDialogOptions);
         if (savePathUri) {
             let savePath = savePathUri.fsPath;
             vscode_1.window.showInformationMessage("savePath is : " + savePath);
             (0, initProject_1.createInitProject)(savePath, context);
+            savePath = savePath.replace(/\\/g, '\/');
+            let folderUri = vscode.Uri.file(savePath);
+            vscode.commands.executeCommand('vscode.openFolder', folderUri);
         }
     }));
     // Add command to the extension context
