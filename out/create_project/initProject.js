@@ -24,7 +24,7 @@ function createInitProject(filepath, context) {
     let optiDevPyName = "opti_dev.py";
     let optiDevTomlName = "opti_dev.toml";
     (0, node_fs_1.copyFileSync)(copyPyPath, new URL(filepath + "\/src\/" + optiDevPyName));
-    (0, node_fs_1.copyFileSync)(copyPyPath, new URL(filepath + "\/" + optiDevTomlName));
+    (0, node_fs_1.copyFileSync)(copyTomlPath, new URL(filepath + "\/" + optiDevTomlName));
 }
 exports.createInitProject = createInitProject;
 //# sourceMappingURL=initProject.js.map

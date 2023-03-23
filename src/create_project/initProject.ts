@@ -21,5 +21,5 @@ export function createInitProject(filepath : string, context: vscode.ExtensionCo
    let optiDevPyName = "opti_dev.py";
    let optiDevTomlName = "opti_dev.toml";
    copyFileSync(copyPyPath, new URL(filepath + "\/src\/" + optiDevPyName));
-   copyFileSync(copyPyPath, new URL(filepath + "\/" + optiDevTomlName));
+   copyFileSync(copyTomlPath, new URL(filepath + "\/" + optiDevTomlName));
 }
