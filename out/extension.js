@@ -15,6 +15,7 @@ const vscode = require("vscode");
 const HelloWorldPanel_1 = require("./panels/HelloWorldPanel");
 const initProject_1 = require("./create_project/initProject");
 const xmlParser_1 = require("./code_generator/xmlParser");
+const pyInstall_1 = require("./py_env/pyInstall");
 function activate(context) {
     // Create the show hello world command
     const showHelloWorldCommand = vscode_1.commands.registerCommand("hello-world.showHelloWorld", () => {
@@ -61,8 +62,17 @@ function activate(context) {
             vscode.commands.executeCommand('vscode.openFolder', folderUri);
         }
     }));
+    //check python env
+    const pythonEnv = vscode_1.commands.registerCommand("py-env.checkPyEnv", () => {
+        if ((0, pyInstall_1.checkPyEnv)("python")) {
+            vscode_1.window.showInformationMessage("pyhton环境成功安装");
+        }
+        else {
+            vscode_1.window.showErrorMessage("pyhton环境未安装");
+        }
+    });
     // Add command to the extension context
-    context.subscriptions.push(showHelloWorldCommand, createProjectQuickPick, initProject, templateProject);
+    context.subscriptions.push(showHelloWorldCommand, createProjectQuickPick, initProject, templateProject, pythonEnv);
 }
 exports.activate = activate;
 //# sourceMappingURL=extension.js.map

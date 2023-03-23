@@ -13,7 +13,8 @@
     "onCommand:hello-world.showHelloWorld",
     "onCommand:create-project.createProjectQuickPick",
     "onCommand:create-project.initProject",
-    "onCommand:create-project.templateProject"
+    "onCommand:create-project.templateProject",
+    "onCommand:py-env.checkPyEnv"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -50,6 +51,10 @@
       {
         "command": "create-project.templateProject",
         "title": "创建模板工程"
+      },
+      {
+        "command": "py-env.checkPyEnv",
+        "title": "检查python环境"
       }
     ],
     "viewsContainers": {
@@ -72,6 +77,10 @@
           "name": "创建光组件工程"
         },
         {
+          "id": "py-env",
+          "name": "配置python环境"
+        },
+        {
           "id": "XML-files",
           "name": "XML模板文件"
         }
@@ -85,6 +94,10 @@
       {
         "view": "create-project",
         "contents": "创建光组件工程方式如下：\n 1. 点击按钮来创建光组件工程。\n 2. 可以选择两种方式来创建工程。 \n [创建光组件空白工程](command:create-project.initProject) \n [创建光组件模板工程](command:create-project.templateProject) \n 点击创建按钮后可根据界面提示进行光组件工程的创建。"
+      },
+      {
+        "view": "py-env",
+        "contents": "通过以下方式检查您本机python开发环境：\n 1. 检查本机是否安装python环境。\n 2. python环境安装。 \n [检查python环境](command:py-env.checkPyEnv) \n [安装python环境](command:create-project.templateProject) \n 点击创建按钮后可根据界面提示进行python环境的创建。"
       }
     ]
   },

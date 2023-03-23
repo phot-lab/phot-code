@@ -3,6 +3,7 @@ import * as vscode  from "vscode";
 import { HelloWorldPanel } from "./panels/HelloWorldPanel";
 import {createInitProject} from "./create_project/initProject";
 import {xmlParse} from "./code_generator/xmlParser";
+import {checkPyEnv}  from "./py_env/pyInstall";
 export function activate(context: ExtensionContext) {
   // Create the show hello world command
   const showHelloWorldCommand = commands.registerCommand("hello-world.showHelloWorld", () => {
@@ -49,6 +50,15 @@ export function activate(context: ExtensionContext) {
       vscode.commands.executeCommand('vscode.openFolder', folderUri);
     }
   })
+
+  //check python env
+  const pythonEnv = commands.registerCommand("py-env.checkPyEnv", () => {
+      if (checkPyEnv("python")) {
+        window.showInformationMessage("pyhton环境成功安装");
+      } else {
+        window.showErrorMessage("pyhton环境未安装");
+      }
+  })
   // Add command to the extension context
-  context.subscriptions.push(showHelloWorldCommand,createProjectQuickPick, initProject, templateProject);
+  context.subscriptions.push(showHelloWorldCommand,createProjectQuickPick, initProject, templateProject, pythonEnv);
 }
