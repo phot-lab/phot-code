@@ -4,6 +4,7 @@ import { HelloWorldPanel } from "./panels/HelloWorldPanel";
 import {createInitProject} from "./create_project/initProject";
 import {xmlParse} from "./code_generator/xmlParser";
 import {checkPyEnv}  from "./py_env/pyInstall";
+import {getfileByUrl, downFileByUrl} from "./network_util/down_file";
 export function activate(context: ExtensionContext) {
   // Create the show hello world command
   const showHelloWorldCommand = commands.registerCommand("hello-world.showHelloWorld", () => {
@@ -54,11 +55,25 @@ export function activate(context: ExtensionContext) {
   //check python env
   const pythonEnv = commands.registerCommand("py-env.checkPyEnv", () => {
       if (checkPyEnv("python")) {
-        window.showInformationMessage("pyhton环境成功安装");
+        window.showInformationMessage("python环境成功安装");
       } else {
-        window.showErrorMessage("pyhton环境未安装");
+        window.showErrorMessage("python环境未安装");
       }
   })
+  //install python env
+  const installPython = commands.registerCommand("py-env.installPyEnv", () => {
+    if (checkPyEnv("python")) {
+      window.showInformationMessage("python环境已成功安装，无需重复安装");
+      return;
+    }
+    //let url = "https://acquirebase.com/img/logo.png";
+    let url = "https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe";
+    let fileName = "python-install.exe";
+    let dir = "C:\/downloads\/";
+    
+    getfileByUrl(url, fileName, dir, context);
+    //downFileByUrl(url, fileName, dir);
+  })
   // Add command to the extension context
-  context.subscriptions.push(showHelloWorldCommand,createProjectQuickPick, initProject, templateProject, pythonEnv);
+  context.subscriptions.push(showHelloWorldCommand,createProjectQuickPick, initProject, templateProject, pythonEnv, installPython);
 }

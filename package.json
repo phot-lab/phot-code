@@ -14,7 +14,8 @@
     "onCommand:create-project.createProjectQuickPick",
     "onCommand:create-project.initProject",
     "onCommand:create-project.templateProject",
-    "onCommand:py-env.checkPyEnv"
+    "onCommand:py-env.checkPyEnv",
+    "onCommand:py-env.installPyEnv"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -55,6 +56,10 @@
       {
         "command": "py-env.checkPyEnv",
         "title": "检查python环境"
+      },
+      {
+        "command": "py-env.installPyEnv",
+        "title": "安装python环境"
       }
     ],
     "viewsContainers": {
@@ -97,7 +102,7 @@
       },
       {
         "view": "py-env",
-        "contents": "通过以下方式检查您本机python开发环境：\n 1. 检查本机是否安装python环境。\n 2. python环境安装。 \n [检查python环境](command:py-env.checkPyEnv) \n [安装python环境](command:create-project.templateProject) \n 点击创建按钮后可根据界面提示进行python环境的创建。"
+        "contents": "通过以下方式检查您本机python开发环境：\n 1. 检查本机是否安装python环境。\n 2. python环境安装。 \n [检查python环境](command:py-env.checkPyEnv) \n [安装python环境](command:py-env.installPyEnv) \n 可根据界面提示进行python环境的创建。"
       }
     ]
   },
@@ -114,6 +119,7 @@
   "devDependencies": {
     "@types/glob": "^7.1.3",
     "@types/node": "^16.18.1",
+    "@types/request": "^2.48.8",
     "@types/vscode": "^1.46.0",
     "@types/xmldoc": "^1.1.6",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
@@ -125,6 +131,7 @@
     "vscode-test": "^1.5.0"
   },
   "dependencies": {
+    "request": "^2.88.2",
     "xmldoc": "^1.2.0"
   }
 }

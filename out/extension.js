@@ -16,6 +16,7 @@ const HelloWorldPanel_1 = require("./panels/HelloWorldPanel");
 const initProject_1 = require("./create_project/initProject");
 const xmlParser_1 = require("./code_generator/xmlParser");
 const pyInstall_1 = require("./py_env/pyInstall");
+const down_file_1 = require("./network_util/down_file");
 function activate(context) {
     // Create the show hello world command
     const showHelloWorldCommand = vscode_1.commands.registerCommand("hello-world.showHelloWorld", () => {
@@ -65,14 +66,27 @@ function activate(context) {
     //check python env
     const pythonEnv = vscode_1.commands.registerCommand("py-env.checkPyEnv", () => {
         if ((0, pyInstall_1.checkPyEnv)("python")) {
-            vscode_1.window.showInformationMessage("pyhton环境成功安装");
+            vscode_1.window.showInformationMessage("python环境成功安装");
         }
         else {
-            vscode_1.window.showErrorMessage("pyhton环境未安装");
+            vscode_1.window.showErrorMessage("python环境未安装");
         }
     });
+    //install python env
+    const installPython = vscode_1.commands.registerCommand("py-env.installPyEnv", () => {
+        if ((0, pyInstall_1.checkPyEnv)("python")) {
+            vscode_1.window.showInformationMessage("python环境已成功安装，无需重复安装");
+            return;
+        }
+        //let url = "https://acquirebase.com/img/logo.png";
+        let url = "https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe";
+        let fileName = "python-install.exe";
+        let dir = "C:\/downloads\/";
+        (0, down_file_1.getfileByUrl)(url, fileName, dir, context);
+        //downFileByUrl(url, fileName, dir);
+    });
     // Add command to the extension context
-    context.subscriptions.push(showHelloWorldCommand, createProjectQuickPick, initProject, templateProject, pythonEnv);
+    context.subscriptions.push(showHelloWorldCommand, createProjectQuickPick, initProject, templateProject, pythonEnv, installPython);
 }
 exports.activate = activate;
 //# sourceMappingURL=extension.js.map

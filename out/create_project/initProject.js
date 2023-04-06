@@ -8,7 +8,7 @@ function createInitProject(filepath, context) {
     vscode.window.showInformationMessage("createInitProject");
     filepath = filepath.replace(/\\/g, '\/');
     filepath = "file:///" + filepath;
-    vscode.window.showInformationMessage("path is :" + path);
+    vscode.window.showInformationMessage("path is :" + path + "filepath is : " + filepath);
     let fileName = "PRBS.xml";
     let pyName = "fiber.py";
     let tomlName = "class.toml";
