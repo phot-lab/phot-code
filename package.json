@@ -1,8 +1,9 @@
 {
-  "name": "hello-world-vue",
-  "displayName": "hello-world-vue",
-  "description": "A hello world sample extension to demonstrate using Vue with the Webview UI Toolkit for VS Code.",
-  "version": "0.0.1",
+  "name": "PhotCodeXT",
+  "displayName": "PhotCodeXT",
+  "description": "该插件可用于创建光组件工程、配置python环境、配置底层运算库、配置计算引擎等功能",
+  "version": "1.0.1",
+  "author": "lzy",
   "engines": {
     "vscode": "^1.46.0"
   },
