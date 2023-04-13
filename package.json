@@ -4,6 +4,7 @@
   "description": "该插件可用于创建光组件工程、配置python环境、配置底层运算库、配置计算引擎等功能",
   "version": "1.0.1",
   "author": "lzy",
+  "extensionDependencies": ["ms-python.python"],
   "engines": {
     "vscode": "^1.46.0"
   },
