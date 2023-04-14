@@ -28,9 +28,6 @@ __pycache__/
 *.a
 *.lib
 
-# VS Code configuration dir
-.vscode/
-
 # Jupyter Notebook cache files
 .ipynb_checkpoints/
 
