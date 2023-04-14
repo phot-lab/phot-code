@@ -1,0 +1,35 @@
+# npm compiled files
+node_modules
+
+# Python cache files
+__pycache__/
+
+# PyCharm files
+.idea/
+
+# macOS dir files
+.DS_Store
+
+# Project packaging generated files
+/dist/
+*.egg-info/
+
+# pip install generated compiled files
+/build/
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# VS Code configuration dir
+.vscode/
+
+# Jupyter Notebook cache files
+.ipynb_checkpoints/
